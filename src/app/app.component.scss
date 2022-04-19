@@ -94,7 +94,7 @@
                 transform: translate(-50%, -60%);
                 font-weight: bold;
                 font-size: 20px;
-                transition: transform .25s;
+                transition: transform 0.25s;
               }
             }
           }
@@ -194,7 +194,7 @@
       }
     }
     .add-new-name {
-      background-color: #1B9E61;
+      background-color: #1b9e61;
       position: absolute;
       width: 30px;
       border-radius: 4px;
@@ -273,7 +273,7 @@
     border-color: lightgrey !important;
   }
   .required-field {
-    background-color: #B33A3A;
+    background-color: #b33a3a;
     color: white;
   }
   .required-field::placeholder {
