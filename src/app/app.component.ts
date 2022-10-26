@@ -13,7 +13,7 @@ import * as data from './unsorted.json';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  items: any = [];
+  items: { title: string }[] = [];
   itemTitle: string;
   itemName: string;
   groupItem: string;
@@ -137,6 +137,7 @@ export class AppComponent {
       this.newDirectory.nativeElement.classList.add('required-field');
     }
     this.itemTitle = undefined;
+    console.log(this.items)
   }
 
   deleteItem(i: number) {
