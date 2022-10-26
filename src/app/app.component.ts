@@ -13,13 +13,13 @@ import * as data from './unsorted.json';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  addNewItem: { active: boolean }[] = [];
   items: { title: string }[] = [];
-  groupItem: string;
-  result: any[] = [];
   uploadedCount: any[] = [];
+  result: any[] = [];
+  groupItem: string;
   itemTitle: string;
   itemName: string;
-  addNewItem: { active: boolean }[] = [];
 
   itemIndex: string;
   namedElements: any = [];
@@ -40,10 +40,6 @@ export class AppComponent {
         this.setInputBooleans();
       }
     }
-  }
-
-  ngAfterViewInit() {
-    console.log(this.result);
   }
 
   // Array's same length as JSON...Hides Add New Name Field
@@ -96,7 +92,6 @@ export class AppComponent {
             this.uploadedCount[i] = Array.from(
               val.parentElement.querySelectorAll('.dragged-items li')
             );
-            console.log('uploaded', this.uploadedCount);
             e.target.parentElement.parentElement.remove();
             e.stopImmediatePropagation();
             let groupI =
@@ -109,7 +104,6 @@ export class AppComponent {
               document.querySelectorAll('.named-elem')
             );
             this.uploadedCount[i].pop();
-            console.log(this.uploadedCount);
           });
         });
       });
@@ -143,7 +137,6 @@ export class AppComponent {
       this.newDirectory.nativeElement.classList.add('required-field');
     }
     this.itemTitle = undefined;
-    console.log(this.itemTitle);
   }
 
   deleteItem(i: number) {
@@ -166,7 +159,6 @@ export class AppComponent {
   deleteName(i: number, j: number) {
     this.result[i].items.splice(j, 1);
     this.typeName.length - 1;
-    console.log(this.typeName);
     this.removeInputs();
   }
 
@@ -200,7 +192,6 @@ export class AppComponent {
   addNamedItem(i: number) {
     this.removeInputs();
     this.addNewItem[i].active = true;
-    console.log(this.addNewItem);
   }
 
   pushNamedItem(i: number) {
@@ -210,7 +201,6 @@ export class AppComponent {
     this.result[i].items.push({ name: this.groupItem });
     this.groupItem = undefined;
     this.addNewItem[i].active = false;
-    console.log('new item', this.addNewItem);
   }
 
   removeInputs() {
@@ -219,5 +209,3 @@ export class AppComponent {
     });
   }
 }
-
-// this.uploadedCount[i] = Array.from(val.parentElement.querySelectorAll('.dragged-items li'));
