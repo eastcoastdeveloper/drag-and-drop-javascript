@@ -17,9 +17,9 @@ export class AppComponent {
   itemTitle: string;
   itemName: string;
   groupItem: string;
-  result: any = [];
-  addNewItem: any = [];
-  uploadedCount = [];
+  result: any[] = [];
+  addNewItem: {active: boolean}[] = [];
+  uploadedCount: any[] = [];
   namedElements: any = [];
   directoryElements: any;
   draggedItem: any;
@@ -27,7 +27,7 @@ export class AppComponent {
   groupIndex: any;
   itemIndex: string;
 
-  @ViewChildren('typeName') typeName: QueryList<any>;
+  @ViewChildren('typeName') typeName: QueryList<ElementRef[]>;
   @ViewChild('newDirectory', { static: false }) newDirectory: ElementRef;
   @ViewChild('newGroup', { static: false }) newGroup: ElementRef;
 
@@ -39,6 +39,10 @@ export class AppComponent {
         this.setInputBooleans();
       }
     }
+  }
+
+  ngAfterViewInit() {
+    console.log(this.result);
   }
 
   // Array's same length as JSON...Hides Add New Name Field
@@ -103,6 +107,7 @@ export class AppComponent {
               document.querySelectorAll('.named-elem')
             );
             this.uploadedCount[i].pop();
+            console.log(this.uploadedCount);
           });
         });
       });
@@ -120,7 +125,6 @@ export class AppComponent {
       );
     elem.classList.toggle('close-block');
     arrow.classList.toggle('rotate-arrow');
-    console.log(this.directoryElements);
   }
 
   removeActiveDropZone(elem: any) {
@@ -137,7 +141,7 @@ export class AppComponent {
       this.newDirectory.nativeElement.classList.add('required-field');
     }
     this.itemTitle = undefined;
-    console.log(this.items)
+    console.log(this.itemTitle);
   }
 
   deleteItem(i: number) {
@@ -160,6 +164,7 @@ export class AppComponent {
   deleteName(i: number, j: number) {
     this.result[i].items.splice(j, 1);
     this.typeName.length - 1;
+    console.log(this.typeName);
     this.removeInputs();
   }
 
