@@ -60,24 +60,19 @@ export class AppComponent {
     this.draggedElement.classList.remove('dragging');
   }
 
-  // From UI to Drop Zones
   collectDropZones() {
     this.directoryElements = Array.from(
       document.querySelectorAll('.child-container .drop-zone')
     );
     this.directoryElements.forEach((val: any, i: number) => {
-      // Drag Leave Event
       val.addEventListener('dragleave', () => {
         this.removeActiveDropZone(val);
       });
-      // Drag Over Event
       val.addEventListener('dragover', (e: any) => {
         e.preventDefault();
         val.classList.add('drag-zone-active');
       });
-      // Drop Event
       val.addEventListener('drop', (e: any) => {
-        // Kill Other Events
         e.stopImmediatePropagation();
         this.removeActiveDropZone(val);
         this.result[this.groupIndex].items.splice([this.itemIndex], 1);
@@ -128,12 +123,10 @@ export class AppComponent {
     console.log(this.directoryElements);
   }
 
-  // Stop Drop Active Indicator
   removeActiveDropZone(elem: any) {
     elem.classList.remove('drag-zone-active');
   }
 
-  // Add New Directory/Dropzone
   itemAdded() {
     if (this.itemTitle != undefined) {
       this.newDirectory.nativeElement.classList.remove('required-field');
@@ -146,8 +139,6 @@ export class AppComponent {
     this.itemTitle = undefined;
   }
 
-  // Delete Directory/Dropzone
-  // Return Elems to Groups
   deleteItem(i: number) {
     this.items.splice(i, 1);
     this.uploadedCount.splice(i, 1);
@@ -165,14 +156,12 @@ export class AppComponent {
     }
   }
 
-  // Delete Dragable
   deleteName(i: number, j: number) {
     this.result[i].items.splice(j, 1);
     this.typeName.length - 1;
     this.removeInputs();
   }
 
-  // Add New Dragable Group
   addGroup() {
     if (this.itemName != undefined) {
       this.newGroup.nativeElement.classList.remove('required-field');
@@ -188,17 +177,14 @@ export class AppComponent {
     this.itemName = undefined;
   }
 
-  // Add New Drop Zone on Enter
   getKeyCode(e: any) {
     e.code === 'Enter' ? this.itemAdded() : '';
   }
 
-  // Add New Group on Enter
   addGroupKeyCode(e: any) {
     e.code === 'Enter' ? this.addGroup() : '';
   }
 
-  // Add New Item on Enter
   addNewItemField(e: any, i: number) {
     e.code === 'Enter' ? this.pushNamedItem(i) : '';
   }
@@ -217,7 +203,6 @@ export class AppComponent {
     this.addNewItem[i].active = false;
   }
 
-  // Hide Input Fields
   removeInputs() {
     this.addNewItem.forEach((val: any) => {
       val.active = false;
