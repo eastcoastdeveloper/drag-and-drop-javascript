@@ -14,18 +14,19 @@ import * as data from './unsorted.json';
 })
 export class AppComponent {
   items: { title: string }[] = [];
-  itemTitle: string;
-  itemName: string;
   groupItem: string;
   result: any[] = [];
-  addNewItem: {active: boolean}[] = [];
   uploadedCount: any[] = [];
+  itemTitle: string;
+  itemName: string;
+  addNewItem: { active: boolean }[] = [];
+
+  itemIndex: string;
   namedElements: any = [];
   directoryElements: any;
   draggedItem: any;
   draggedElement: any;
   groupIndex: any;
-  itemIndex: string;
 
   @ViewChildren('typeName') typeName: QueryList<ElementRef[]>;
   @ViewChild('newDirectory', { static: false }) newDirectory: ElementRef;
@@ -95,6 +96,7 @@ export class AppComponent {
             this.uploadedCount[i] = Array.from(
               val.parentElement.querySelectorAll('.dragged-items li')
             );
+            console.log('uploaded', this.uploadedCount);
             e.target.parentElement.parentElement.remove();
             e.stopImmediatePropagation();
             let groupI =
@@ -198,16 +200,17 @@ export class AppComponent {
   addNamedItem(i: number) {
     this.removeInputs();
     this.addNewItem[i].active = true;
+    console.log(this.addNewItem);
   }
-  
+
   pushNamedItem(i: number) {
     this.groupItem.length > 10
-    ? (this.groupItem = this.groupItem.slice(0, 10) + ' . . .')
-    : '';
+      ? (this.groupItem = this.groupItem.slice(0, 10) + ' . . .')
+      : '';
     this.result[i].items.push({ name: this.groupItem });
     this.groupItem = undefined;
-    console.log(this.addNewItem)
     this.addNewItem[i].active = false;
+    console.log('new item', this.addNewItem);
   }
 
   removeInputs() {
