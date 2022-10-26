@@ -199,13 +199,14 @@ export class AppComponent {
     this.removeInputs();
     this.addNewItem[i].active = true;
   }
-
+  
   pushNamedItem(i: number) {
     this.groupItem.length > 10
-      ? (this.groupItem = this.groupItem.slice(0, 10) + ' . . .')
-      : '';
+    ? (this.groupItem = this.groupItem.slice(0, 10) + ' . . .')
+    : '';
     this.result[i].items.push({ name: this.groupItem });
     this.groupItem = undefined;
+    console.log(this.addNewItem)
     this.addNewItem[i].active = false;
   }
 
