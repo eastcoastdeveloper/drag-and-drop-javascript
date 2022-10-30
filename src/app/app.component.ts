@@ -13,20 +13,19 @@ import * as data from './unsorted.json';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  addNewItem: { active: boolean }[] = [];
   items: { title: string }[] = [];
-  uploadedCount: any[] = [];
-  result: any[] = [];
   groupItem: string;
+  groupIndex: any;
+  result: any[] = [];
+  uploadedCount: any[] = [];
   itemTitle: string;
   itemName: string;
-
+  addNewItem: { active: boolean }[] = [];
   itemIndex: string;
   namedElements: any = [];
   directoryElements: any;
   draggedItem: any;
   draggedElement: any;
-  groupIndex: any;
 
   @ViewChildren('typeName') typeName: QueryList<ElementRef[]>;
   @ViewChild('newDirectory', { static: false }) newDirectory: ElementRef;
