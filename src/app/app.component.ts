@@ -18,7 +18,7 @@ export class AppComponent {
   items: { title: string }[] = [];
   groupItem: string;
   groupIndex: any;
-  result: DataResponse[] = [];
+  result: UnsortedData[] = [];
   uploadedCount: any[] = [];
   itemTitle: string;
   itemName: string;
