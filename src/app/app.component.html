@@ -77,7 +77,7 @@
       </div>
       <div class="add-new-name" *ngIf="result[i].items.length > 0">
         <span (click)="addNamedItem(i)">&#43;</span>
-        <div class="add-new" *ngIf="addNewItem != undefined ? addNewItem[i].active : ''">
+        <div class="add-new" *ngIf="addNewItem[i]?.active">
           <input
             placeholder="Add new item"
             [(ngModel)]="groupItem"
