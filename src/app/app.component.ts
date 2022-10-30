@@ -6,6 +6,7 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
+import { DataResponse, ItemResponse, UnsortedData } from '../assets/unsorted.interface';
 // import * as data from './unsorted.json';
 
 @Component({
@@ -17,7 +18,7 @@ export class AppComponent {
   items: { title: string }[] = [];
   groupItem: string;
   groupIndex: any;
-  result: any = [];
+  result: DataResponse[] = [];
   uploadedCount: any[] = [];
   itemTitle: string;
   itemName: string;
@@ -34,22 +35,16 @@ export class AppComponent {
 
   constructor(private _http: HttpClient) {
     // Get JSON
-    this._http.get('assets/unsorted.json').subscribe((val) => {
+    this._http.get<UnsortedData[]>('assets/unsorted.json').subscribe(val => {
       this.result = val;
       this.setInputBooleans();
     });
-    // for (let key in data.unsortedItems) {
-    //   if (data.unsortedItems.hasOwnProperty(key)) {
-    //     this.result.push(data.unsortedItems[key]);
-    //   }
-    // }
-    // console.log(this.result);
   }
 
   // Array's same length as JSON...Hides Add New Name Field
   setInputBooleans() {
     this.addNewItem.push({ active: false });
-    console.log(this.addNewItem)
+    console.log(this.addNewItem);
   }
 
   // Add Dragstart Evt to All
