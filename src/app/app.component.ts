@@ -36,11 +36,11 @@ export class AppComponent {
     // Get JSON
     this._http.get('assets/unsorted.json').subscribe((val) => {
       this.result = val;
+      this.setInputBooleans();
     });
     // for (let key in data.unsortedItems) {
     //   if (data.unsortedItems.hasOwnProperty(key)) {
     //     this.result.push(data.unsortedItems[key]);
-    //     this.setInputBooleans();
     //   }
     // }
     // console.log(this.result);
