@@ -51,6 +51,7 @@ export class AppComponent {
   dragStartHandler(e: any) {
     this.groupIndex = e.target.dataset.group;
     this.itemIndex = e.target.dataset.name;
+    console.log(this.itemIndex);
     this.draggedElement = e.target;
     this.draggedItem = this.draggedElement.querySelector('p').innerText;
     this.draggedElement.classList.add('dragging');
@@ -77,6 +78,7 @@ export class AppComponent {
         e.stopImmediatePropagation();
         this.removeActiveDropZone(val);
         this.result[this.groupIndex].items.splice([this.itemIndex], 1);
+        console.log(this.result[this.groupIndex].items.splice([this.itemIndex], 1));
         let elem = document.createElement('li');
         elem.setAttribute('data-groupIndex', this.groupIndex);
         elem.innerHTML =
