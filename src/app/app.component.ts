@@ -6,7 +6,8 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-
+import { ItemResponse } from '../assets/item-response.interface';
+// import { Response } from '../assets/response.interface';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -33,7 +34,7 @@ export class AppComponent {
 
   constructor(private _http: HttpClient) {
     // Get JSON
-    this._http.get<Response[]>('assets/unsorted.json').subscribe((val) => {
+    this._http.get<ItemResponse[]>('assets/unsorted.json').subscribe((val) => {
       this.result = val;
       this.setInputBooleans();
     });
@@ -89,7 +90,6 @@ export class AppComponent {
             this.uploadedCount[i] = Array.from(
               val.parentElement.querySelectorAll('.dragged-items li')
             );
-            console.log(this.uploadedCount)
             e.target.parentElement.parentElement.remove();
             e.stopImmediatePropagation();
             let groupI =
