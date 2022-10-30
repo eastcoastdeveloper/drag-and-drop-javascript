@@ -17,7 +17,7 @@ export class AppComponent {
   items: { title: string }[] = [];
   groupItem: string;
   groupIndex: any;
-  result: UnsortedData[] = [];
+  result: any = [];
   uploadedCount: any[] = [];
   itemTitle: string;
   itemName: string;
@@ -34,7 +34,7 @@ export class AppComponent {
 
   constructor(private _http: HttpClient) {
     // Get JSON
-    this._http.get<UnsortedData[]>('assets/unsorted.json').subscribe(val => {
+    this._http.get<Response[]>('assets/unsorted.json').subscribe((val) => {
       this.result = val;
       this.setInputBooleans();
     });
@@ -43,7 +43,6 @@ export class AppComponent {
   // Array's same length as JSON...Hides Add New Name Field
   setInputBooleans() {
     this.addNewItem.push({ active: false });
-    console.log(this.addNewItem);
   }
 
   // Add Dragstart Evt to All
@@ -91,6 +90,7 @@ export class AppComponent {
             this.uploadedCount[i] = Array.from(
               val.parentElement.querySelectorAll('.dragged-items li')
             );
+            console.log(this.uploadedCount)
             e.target.parentElement.parentElement.remove();
             e.stopImmediatePropagation();
             let groupI =
