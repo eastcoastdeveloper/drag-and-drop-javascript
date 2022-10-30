@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import {
   Component,
   ElementRef,
@@ -16,7 +17,7 @@ export class AppComponent {
   items: { title: string }[] = [];
   groupItem: string;
   groupIndex: any;
-  result: any[] = [];
+  result: any = [];
   uploadedCount: any[] = [];
   itemTitle: string;
   itemName: string;
@@ -31,14 +32,18 @@ export class AppComponent {
   @ViewChild('newDirectory', { static: false }) newDirectory: ElementRef;
   @ViewChild('newGroup', { static: false }) newGroup: ElementRef;
 
-  constructor() {
+  constructor(private _http: HttpClient) {
     // Get JSON
-    for (let key in data.unsortedItems) {
-      if (data.unsortedItems.hasOwnProperty(key)) {
-        this.result.push(data.unsortedItems[key]);
-        this.setInputBooleans();
-      }
-    }
+    this._http.get('assets/unsorted.json').subscribe((val) => {
+      console.log(val);
+    });
+    // for (let key in data.unsortedItems) {
+    //   if (data.unsortedItems.hasOwnProperty(key)) {
+    //     this.result.push(data.unsortedItems[key]);
+    //     this.setInputBooleans();
+    //   }
+    // }
+    // console.log(this.result);
   }
 
   // Array's same length as JSON...Hides Add New Name Field
