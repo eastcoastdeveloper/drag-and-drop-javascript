@@ -6,8 +6,7 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { DataResponse, ItemResponse, UnsortedData } from '../assets/unsorted.interface';
-// import * as data from './unsorted.json';
+import { UnsortedData } from '../assets/unsorted.interface';
 
 @Component({
   selector: 'my-app',
