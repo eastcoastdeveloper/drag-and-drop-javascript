@@ -7,7 +7,7 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { ItemResponse } from '../assets/item-response.interface';
-// import { Response } from '../assets/response.interface';
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',

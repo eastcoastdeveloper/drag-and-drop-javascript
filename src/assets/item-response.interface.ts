@@ -1,3 +1,3 @@
 export class ItemResponse {
-  key: { items: { name: string }[] };
+  [index: number]: { items: { name: string }[] };
 }
