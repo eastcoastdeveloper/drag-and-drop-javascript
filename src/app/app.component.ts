@@ -49,6 +49,7 @@ export class AppComponent {
   // Array's same length as JSON...Hides Add New Name Field
   setInputBooleans() {
     this.addNewItem.push({ active: false });
+    console.log(this.addNewItem)
   }
 
   // Add Dragstart Evt to All
