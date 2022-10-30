@@ -6,7 +6,7 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import * as data from './unsorted.json';
+// import * as data from './unsorted.json';
 
 @Component({
   selector: 'my-app',
@@ -35,7 +35,7 @@ export class AppComponent {
   constructor(private _http: HttpClient) {
     // Get JSON
     this._http.get('assets/unsorted.json').subscribe((val) => {
-      console.log(val);
+      this.result = val;
     });
     // for (let key in data.unsortedItems) {
     //   if (data.unsortedItems.hasOwnProperty(key)) {
