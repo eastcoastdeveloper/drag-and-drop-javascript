@@ -20,9 +20,3 @@ body {
 .mt-10 {
   margin-top: 10px;
 }
-
-@media screen and (max-width: 768px) {
-  .website {
-    display: none;
-  }
-}
